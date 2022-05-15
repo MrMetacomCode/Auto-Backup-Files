@@ -3,7 +3,7 @@ import sys
 import shutil
 from datetime import date
 from apscheduler.triggers.cron import CronTrigger
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 # When there is need, just change the directory
 os.chdir(sys.path[0])
@@ -69,13 +69,10 @@ def take_backup(src_file_name,
 
 def backup_files():
     # Call the function
-    take_backup("Current-MC-Server", dst_dir="MC-Server-Backups/")
+    take_backup("Current-MC-Server", dst_dir="MC-Server-Backups/", src_dir="/home/mrmetacom/Documents/Current-MC-Server")
 
 
-while True:
-    # Runs the function to report the amount of times $bombs has been called today.
-    scheduler = AsyncIOScheduler()
-    scheduler.add_job(backup_files, CronTrigger(hour=23, minute=59, second=0))
-    scheduler.start()
-    print("Auto backup is running.")
-
+scheduler = BlockingScheduler()
+scheduler.add_job(backup_files, CronTrigger(hour=23, minute=59, second=0))
+print("Auto backup is running.")
+scheduler.start()
