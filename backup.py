@@ -69,7 +69,7 @@ def take_backup(src_file_name,
 
 def backup_files():
     # Call the function
-    take_backup("Current-MC-Server", dst_dir="MC-Server-Backups/", src_dir="/home/mrmetacom/Documents/Current-MC-Server")
+    take_backup("Current-MC-Server", dst_dir="MC-Server-Backups/", src_dir="cd ../Current-MC-Server/")
 
 
 scheduler = BlockingScheduler()
