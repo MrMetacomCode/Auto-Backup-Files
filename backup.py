@@ -38,6 +38,6 @@ def backup_files():
 
 
 scheduler = BlockingScheduler()
-scheduler.add_job(backup_files, CronTrigger(hour=21, minute=6, second=0))
+scheduler.add_job(backup_files, CronTrigger(hour=21, minute=20, second=0))
 print("Auto backup is running.")
 scheduler.start()
