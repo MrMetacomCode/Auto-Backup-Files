@@ -23,7 +23,7 @@ def take_backup(src_dir='',
         dst_dir = dst_dir + date_format
 
         # Now, just copy the files from source to destination
-        shutil.copy2(src_dir, dst_dir)
+        shutil.copytree(src_dir, dst_dir)
 
         print("Backup Successful!")
     except FileNotFoundError:
@@ -37,6 +37,6 @@ def backup_files():
 
 
 scheduler = BlockingScheduler()
-scheduler.add_job(backup_files, CronTrigger(hour=20, minute=52, second=0))
+scheduler.add_job(backup_files, CronTrigger(hour=20, minute=55, second=0))
 print("Auto backup is running.")
 scheduler.start()
