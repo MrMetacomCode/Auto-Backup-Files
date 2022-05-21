@@ -20,7 +20,7 @@ def take_backup(src_dir='',
 
     try:
         # When user enters a name for the backup copy
-        dst_dir = dst_dir + date_format
+        dst_dir = f"{date_format}Current-MC-Server"
 
         # Now, just copy the files from source to destination
         shutil.copytree(src_dir, dst_dir)
@@ -33,10 +33,10 @@ def take_backup(src_dir='',
 
 def backup_files():
     # Call the function
-    take_backup(dst_dir="../MC-Server-Backups/", src_dir="/home/mrmetacom/Documents/")
+    take_backup(dst_dir="../MC-Server-Backups/", src_dir="/home/mrmetacom/Documents/Current-MC-Server/")
 
 
 scheduler = BlockingScheduler()
-scheduler.add_job(backup_files, CronTrigger(hour=20, minute=55, second=0))
+scheduler.add_job(backup_files, CronTrigger(hour=21, minute=3, second=0))
 print("Auto backup is running.")
 scheduler.start()
