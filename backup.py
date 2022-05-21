@@ -69,10 +69,10 @@ def take_backup(src_file_name,
 
 def backup_files():
     # Call the function
-    take_backup("Current-MC-Server", dst_dir="../MC-Server-Backups/", src_dir="~/Documents")
+    take_backup("Current-MC-Server", dst_dir="../MC-Server-Backups/", src_dir="/home/mrmetacom/Documents/")
 
 
 scheduler = BlockingScheduler()
-scheduler.add_job(backup_files, CronTrigger(hour=20, minute=40, second=0))
+scheduler.add_job(backup_files, CronTrigger(hour=20, minute=42, second=0))
 print("Auto backup is running.")
 scheduler.start()
