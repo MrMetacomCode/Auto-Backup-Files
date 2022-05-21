@@ -9,10 +9,11 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 os.chdir(sys.path[0])
 
 
-# Function for performing the
-# backup of the files and folders
-def take_backup(src_dir='',
-                dst_dir=''):
+selected_dst_dir = "/home/mrmetacom/Documents/MC-Server-Backups/"
+selected_src_dir = "/home/mrmetacom/Documents/Current-MC-Server/"
+
+
+def take_backup(src_dir, dst_dir):
 
     # Extract the today's date
     today = date.today()
@@ -20,10 +21,10 @@ def take_backup(src_dir='',
 
     try:
         # When user enters a name for the backup copy
-        dst_dir = f"{date_format}Current-MC-Server"
+        new_dst_dir = f"{dst_dir}{date_format}Current-MC-Server"
 
         # Now, just copy the files from source to destination
-        shutil.copytree(src_dir, dst_dir)
+        shutil.copytree(src_dir, new_dst_dir)
 
         print("Backup Successful!")
     except FileNotFoundError:
@@ -33,7 +34,7 @@ def take_backup(src_dir='',
 
 def backup_files():
     # Call the function
-    take_backup(dst_dir="/home/mrmetacom/Documents/MC-Server-Backups/", src_dir="/home/mrmetacom/Documents/Current-MC-Server/")
+    take_backup(selected_src_dir, selected_dst_dir)
 
 
 scheduler = BlockingScheduler()
