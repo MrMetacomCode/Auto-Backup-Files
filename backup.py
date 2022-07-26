@@ -9,8 +9,8 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 os.chdir(sys.path[0])
 
 
-selected_dst_dir = "/home/mrmetacom/Documents/MC-Server-Backups/"
-selected_src_dir = "/home/mrmetacom/Documents/Current-MC-Server/"
+selected_dst_dir = "/home/mrmetacom/Minecraft-Server/MC-Server-Backups/"
+selected_src_dir = "/home/mrmetacom/Minecraft-Server/Current-MC-Server/"
 
 
 def take_backup(src_dir, dst_dir):
@@ -38,6 +38,6 @@ def backup_files():
 
 
 scheduler = BlockingScheduler()
-scheduler.add_job(backup_files, CronTrigger(hour=21, minute=20, second=0))
+scheduler.add_job(backup_files, CronTrigger(hour=23, minute=55, second=0))
 print("Auto backup is running.")
 scheduler.start()
